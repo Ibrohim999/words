@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [text, setText] = React.useState('')
+            const [word, setWord] = React.useState('')
+            const holder = 'write'
+            const option = () => {
+                            if (text.length == 0) {
+                                setWord("harf yoq")
+                            } else if (text.length == 5) {
+                                setWord("5ta harf kritdiz")
+                            } else if (text.length < 5) {
+                                setWord("5tadan kam harf kritdiz")
+                            } else if (text.length > 5) {
+                                setWord("5tadan kop harf kritdiz")
+                            }
+                            
+                        }
+                        
+            return (
+                <div className="container">
+                    <div className="box">
+
+                    
+                    <div className="card">
+                        <input type="text" placeholder={holder} value={text} onChange={(e) => setText(e.target.value)} />
+                        <button onClick={option}>enter</button>
+                        <h2>{word}</h2>
+                    </div>
+                    </div>
+                </div >
+            )
+        }
+        const root = document.getElementById("root")
+        const app = ReactDOM.createRoot(root)
+        app.render(<App />)
+    </script>
+</body>
+
+</html>
